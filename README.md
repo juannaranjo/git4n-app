@@ -2,7 +2,8 @@
 A test app that uses the github api to search the public user repos. Written in React
 
 ## To run this project
-After clone please run `yarn install` and then you can use any of the following
+Make sure you have install node version >=10 <br />
+After cloning this project please run `yarn install` and then you can use any of the following
 
 ### `yarn start`
 
