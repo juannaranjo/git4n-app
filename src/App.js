@@ -2,6 +2,7 @@ import React from 'react';
 import CandidateInfoForm from './components/candidateInfoForm'
 import CandidateInfo from './components/candidateInfo'
 import cookieUtils from './utils/cookies'
+import './styles/normalize.css';
 import './styles/App.css';
 
 
