@@ -1,0 +1,29 @@
+.App-git4n{
+  color: #464646;
+  font-size: calc(10px + 1vmin);
+  width: 100%;
+}
+
+.git4n-header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 2rem;
+  width: 80vmin;
+}
+
+.git4n-header-logo {
+  display: flex;
+  justify-content: space-around;
+}
+
+.git4n-header-logo h2{
+  font-size: calc(18px + 2vmin);
+  font-weight: 400;
+  margin: 2rem;
+}
+
+
+
