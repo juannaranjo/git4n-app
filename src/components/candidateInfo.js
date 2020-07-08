@@ -4,17 +4,16 @@ import '../styles/candidateInfo.css'
 
 class CandidateInfo extends React.Component {
     
-  readCandidateInfoFromCookie(){
+  readCandidateInfoFromCookie = () => {
     const cookieData = cookieUtils.get();
-
     const userData = [
       {
         field: 'Name:',
-        value: cookieUtils.name
+        value: cookieData.name
       },
       {
         field: 'Last Name:',
-        value: cookieUtils.lastName
+        value: cookieData.lastName
       },
       {
         field: 'Id:',
@@ -30,24 +29,33 @@ class CandidateInfo extends React.Component {
       },
       {
         field: 'GitHub User:',
-        value: cookieUtils.githubUser
+        value: cookieData.githubUser
       },
     ]
     return userData
   }
+
+  deleteCookie = () => {
+    cookieUtils.delete('candidateInfo')
+    this.props.updateUserCookie(false)
+  }
+
   render() {
     return (
-      <div className="candidate-info-container">
-        {
-          this.readCandidateInfoFromCookie().map(item => {
-            return (
-              <div className="info-wrapper">
-                <h3>{item.field}</h3>
-                <p>{item.value}</p>
-              </div>
-            )
-          })
-        }
+      <div className="candidate-info-component">
+        <div className="candidate-info-container">
+          {
+            this.readCandidateInfoFromCookie().map(item => {
+              return (
+                <div className="info-wrapper" key={item.field}>
+                  <h3>{item.field}</h3>
+                  <p>{item.value}</p>
+                </div>
+              )
+            })
+          }
+        </div>
+        <button className="new-search-button" onClick={this.deleteCookie}>New Search</button>
       </div>
     );
   }

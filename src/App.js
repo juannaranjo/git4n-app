@@ -1,16 +1,19 @@
 import React from 'react';
 import CandidateInfoForm from './components/candidateInfoForm'
 import CandidateInfo from './components/candidateInfo'
+import CandidateRepos from './components/candidateRepos'
 import cookieUtils from './utils/cookies'
-import './styles/normalize.css';
-import './styles/App.css';
+import getReposFromGithub from './utils/api'
+import './styles/normalize.css'
+import './styles/App.css'
 
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      hasUserCookie: false    
+      hasUserCookie: false,
+      candidateRepos: []    
     };
   }
 
@@ -21,6 +24,7 @@ class App extends React.Component {
   hasUserCookie(){
     if(cookieUtils.get()){
       this.updateUserCookie(true);
+      this.getRepos(cookieUtils.get().githubUser)
     }else{
       this.updateUserCookie(false);
     }
@@ -28,6 +32,12 @@ class App extends React.Component {
 
   updateUserCookie = (state) => {
     this.setState({hasUserCookie: state});
+  }
+
+  getRepos = async (githubUser) => {
+    const repos = await getReposFromGithub(githubUser,'')
+    console.log('repos', repos)
+    this.setState({candidateRepos: repos});
   }
 
   render(){
@@ -41,8 +51,11 @@ class App extends React.Component {
           <p> This app allows you to search the public github repos that a person has </p>
         </header>
         <main>
-          {this.state.hasUserCookie && <CandidateInfo />}
-          {!this.state.hasUserCookie && <CandidateInfoForm updateUserCookie={this.updateUserCookie}/>}
+          {this.state.hasUserCookie && <CandidateInfo  updateUserCookie={this.updateUserCookie}/>}
+          {this.state.hasUserCookie && <CandidateRepos candidateRepos={this.state.candidateRepos}/>}
+          {!this.state.hasUserCookie && <CandidateInfoForm 
+            updateUserCookie={this.updateUserCookie} 
+            getRepos={this.getRepos}/>}
         </main>
       </div>
     );
