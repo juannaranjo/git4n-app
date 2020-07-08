@@ -1,13 +1,16 @@
+.candidate-info-component{
+    margin: 0 auto;
+    width: 90vmin;
+}
+
 .candidate-info-container {
     border: solid 1px #ec1c25;
     display: flex;
     flex-wrap: wrap;
     font-weight: 300;
     justify-content: space-around;
-    margin: 0 auto;
     padding: 0 1rem;
     text-align: center;
-    width: 85vmin;
 }
 
 .candidate-info-container .info-wrapper {
@@ -17,4 +20,21 @@
 .candidate-info-container .info-wrapper h3{
     font-size: calc(10px + 1vmin);
     font-weight: 500;
+}
+
+.new-search-button{
+    background: #fff;
+    border: 1px solid #464646;
+    float: right;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    transition: all 1s;
+    width: 30%;
+}
+
+.new-search-button:hover{
+    background: #ec1c25;
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
 }

@@ -1,0 +1,15 @@
+.candidate-repos-table{
+    font-weight: 300;
+    margin: 0 auto 5vmin;
+    width: 85%;
+
+}
+
+.candidate-repos-table thead {
+    background-color: #ec1c25;
+    color: #fff;
+}
+
+.candidate-repos-table tbody tr:nth-child(2n){
+    background-color: #F2F3F4;
+}

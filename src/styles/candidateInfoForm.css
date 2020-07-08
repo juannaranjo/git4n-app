@@ -22,13 +22,13 @@
   }
   
   .candidate-info-form .get-info-button {
-    width: 50%;
     background: #fff;
     border: 1px solid #464646;
     font-size: calc(10px + 1vmin);
     margin: 1rem;
     padding: 0.5rem;
     transition: all 1s;
+    width: 50%;
   }
   
   .candidate-info-form .get-info-button:hover{
