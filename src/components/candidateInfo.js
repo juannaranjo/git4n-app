@@ -40,7 +40,7 @@ class CandidateInfo extends React.Component {
     this.props.updateHasCookieState(false)
   }
 
-  renderField(element) {
+  renderField(item) {
     return  (
       <div className="info-wrapper" key={item.field}>
         <h3>{item.field}</h3>

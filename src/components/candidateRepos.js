@@ -21,7 +21,7 @@ class CandidateRepos extends React.Component {
     } else {
       return(
         <tr>
-          <th colspan="5">No repos found for this user</th>
+          <th colSpan="5">No repos found for this user</th>
         </tr>
       )
     }
