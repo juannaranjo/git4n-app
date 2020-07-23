@@ -21,8 +21,13 @@ class CandidateInfoForm extends React.Component {
 
   handleFormSubmit = (event) => {  
     event.preventDefault();
-    cookieUtils.create('candidateInfo',this.state);
-    this.props.updateUserCookie(true);
+    const cookieData = {
+      name: 'candidateInfo',
+      data: this.state
+    }
+    
+    cookieUtils.create(cookieData);
+    this.props.updateHasCookieState(true);
     this.props.getRepos(this.state.githubUser);
   }
 

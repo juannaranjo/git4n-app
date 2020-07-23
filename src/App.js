@@ -9,13 +9,11 @@ import './styles/App.css'
 
 
 class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
+  state = {
       hasUserCookie: false,
       candidateRepos: []    
-    };
-  }
+  };
+
 
   componentDidMount(){
     this.hasUserCookie()
@@ -23,14 +21,14 @@ class App extends React.Component {
   
   hasUserCookie(){
     if(cookieUtils.get()){
-      this.updateUserCookie(true);
+      this.updateHasCookieState(true);
       this.getRepos(cookieUtils.get().githubUser)
     }else{
-      this.updateUserCookie(false);
+      this.updateHasCookieState(false);
     }
   }
 
-  updateUserCookie = (state) => {
+  updateHasCookieState = (state) => {
     this.setState({hasUserCookie: state});
   }
 
@@ -51,11 +49,16 @@ class App extends React.Component {
           <p> This app allows you to search the public github repos that a person has </p>
         </header>
         <main>
-          {this.state.hasUserCookie && <CandidateInfo  updateUserCookie={this.updateUserCookie}/>}
-          {this.state.hasUserCookie && <CandidateRepos candidateRepos={this.state.candidateRepos}/>}
-          {!this.state.hasUserCookie && <CandidateInfoForm 
-            updateUserCookie={this.updateUserCookie} 
-            getRepos={this.getRepos}/>}
+          {this.state.hasUserCookie ? 
+            <>
+            <CandidateInfo  updateHasCookieState={this.updateHasCookieState}/>
+            <CandidateRepos candidateRepos={this.state.candidateRepos}/>
+            </> 
+            :
+            <CandidateInfoForm 
+              updateHasCookieState={this.updateHasCookieState} 
+              getRepos={this.getRepos}/>
+          }
         </main>
       </div>
     );

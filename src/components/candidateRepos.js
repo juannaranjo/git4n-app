@@ -21,7 +21,7 @@ class CandidateRepos extends React.Component {
     } else {
       return(
         <tr>
-          <th colspan="5">No repos found for this user</th>
+          <th colSpan="5">No repos found for this user</th>
         </tr>
       )
     }
@@ -29,22 +29,20 @@ class CandidateRepos extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <table className="candidate-repos-table">
-          <thead>
-            <tr>
-              <th>Language</th>
-              <th>Default Branch</th>
-              <th>Url git</th>
-              <th>Name</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.loadReposData()}
-          </tbody> 
-        </table>
-      </React.Fragment>
+      <table className="candidate-repos-table">
+        <thead>
+          <tr>
+            <th>Language</th>
+            <th>Default Branch</th>
+            <th>Url git</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.loadReposData()}
+        </tbody> 
+      </table>
     );
   }
 }

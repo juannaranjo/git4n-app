@@ -1,5 +1,5 @@
 const cookieUtils = {
-    create: (name,data) => { 
+    create: ({ name, data }) => { 
         document.cookie = `${name}=${JSON.stringify(data)}`;
     },
     get: () => {

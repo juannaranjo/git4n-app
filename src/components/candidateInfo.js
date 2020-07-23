@@ -37,7 +37,16 @@ class CandidateInfo extends React.Component {
 
   deleteCookie = () => {
     cookieUtils.delete('candidateInfo')
-    this.props.updateUserCookie(false)
+    this.props.updateHasCookieState(false)
+  }
+
+  renderField(item) {
+    return  (
+      <div className="info-wrapper" key={item.field}>
+        <h3>{item.field}</h3>
+        <p>{item.value}</p>
+      </div>
+    )
   }
 
   render() {
@@ -45,14 +54,7 @@ class CandidateInfo extends React.Component {
       <div className="candidate-info-component">
         <div className="candidate-info-container">
           {
-            this.readCandidateInfoFromCookie().map(item => {
-              return (
-                <div className="info-wrapper" key={item.field}>
-                  <h3>{item.field}</h3>
-                  <p>{item.value}</p>
-                </div>
-              )
-            })
+            this.readCandidateInfoFromCookie().map(this.renderField)
           }
         </div>
         <button className="new-search-button" onClick={this.deleteCookie}>New Search</button>
